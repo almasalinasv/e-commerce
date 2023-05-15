@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react'
 import { getProducts } from '../helpers/getProducts';
 
-export const useFetchProducts = () => {
+export const useFetchProducts = (complemento) => {
 
-    const [images, setImages] = useState([]);
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     
-    const getImages = async() =>{
-      const newImages =  await getProducts();
-      setImages(newImages);
+    const getData = async() =>{
+      const newData =  await getProducts(complemento);
+      setData(newData);
       setIsLoading(false);
     }
   
    
-    console.log("imagesEnviadas",images)
     useEffect(() => {
-      getImages();
+      getData();
     
     }, [])
     
   return {
-   images: images,
+   data: data,
    isLoading: isLoading
   }
 }

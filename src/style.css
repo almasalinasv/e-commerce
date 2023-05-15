@@ -61,3 +61,7 @@
   nav{
     background-color: #C2BBB2;
   }
+form{
+  border-radius: 10px;
+  border-color: #2A2714;
+}
