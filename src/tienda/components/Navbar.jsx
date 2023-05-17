@@ -6,6 +6,7 @@ export const Navbar = () => {
 
   //const [token, setToken] = useState(localStorage.getItem("userToken") ?? null);
   console.log(localStorage.getItem('token'))
+  console.log(localStorage)
   const acceso = localStorage.getItem('token');
   return (
     <>

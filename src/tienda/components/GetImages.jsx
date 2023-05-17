@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addNewItem } from '../../store/carrito/thunks';
 
 export const GetImages = (image) => {
+
+const dispatch = useDispatch();
+
+const onClickNewItem = () => {
+  dispatch(addNewItem());
+}
 
   return (
     <div className="col-md-3 " >
@@ -9,7 +17,7 @@ export const GetImages = (image) => {
             <div className="card-body">
                 <h5 className="card-title"><small>{image.title  }</small></h5>
                 <p className="card-price">${image.price}</p>
-                <a href="#" className="btn btn-secondary btn-sm">Ver más</a>
+                <button onClick={onClickNewItem} className="btn btn-secondary btn-sm">Agregar</button>
             </div>
         </div>
         

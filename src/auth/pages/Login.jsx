@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { Navbar } from "../../tienda/components/Navbar"
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { checkingAuthentication } from "../../store/auth/thunks";
 
 export const Login = () => {
-
+  const dispatch = useDispatch();
   const [data, setData] = useState(null)
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
@@ -24,6 +26,7 @@ export const Login = () => {
                     localStorage.setItem('token', data.token)
                 })
                 .catch(err => console.dir(err))
+                dispatch(checkingAuthentication());
         }
 
         
