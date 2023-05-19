@@ -3,14 +3,17 @@ import { Navbar } from "../../tienda/components/Navbar"
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { checkingAuthentication } from "../../store/auth/thunks";
+import { Navigate } from "react-router-dom";
 
 export const Login = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState(null)
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('')
-    
+  const [password, setPassword] = useState('');
+
+
         const handleSubmit = (e) =>{
+          
             e.preventDefault()
             axios({
                 method: 'POST',
@@ -22,14 +25,14 @@ export const Login = () => {
                 },
               })
                 .then(({ data }) => {
-                    setData(data)
-                    localStorage.setItem('token', data.token)
+                    setData(data);
+                    localStorage.setItem('token', data.token);
                 })
-                .catch(err => console.dir(err))
+                .catch(err => console.dir(err));
                 dispatch(checkingAuthentication());
+                
+             
         }
-
-        
 
   return (
     <>
@@ -47,7 +50,7 @@ export const Login = () => {
       className="form-control" 
       placeholder="username"
       name = "userName"
-      // value = {username}
+      value = {username}
       onChange={(event) => setUsername(event.target.value)}
     />
   </div>
@@ -60,12 +63,17 @@ export const Login = () => {
       type="password" 
       className="form-control" 
       placeholder="password" 
-      // value={password}
+      value={password}
       onChange={(event) => setPassword(event.target.value)}
     />
   </div>
-  <button onClick={handleSubmit} type="submit" className="btn btn-primary" >Iniciar sesion</button>
+  <button onClick={handleSubmit }  type="submit" className="btn btn-primary" >
+    Iniciar sesion
+    {!!data && <Navigate to = "/inicio" />}
+    </button>
+  
 </form>
+
 </div>
     </>
   )

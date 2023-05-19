@@ -4,7 +4,6 @@ import { cartSlice } from './carrito/cartSlice';
 
 export const store = configureStore({
   reducer: {
-    auth: authSlice.reducer,
     cart: cartSlice.reducer
   },
 });
