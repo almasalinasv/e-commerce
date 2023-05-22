@@ -32,14 +32,15 @@ export const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mx-auto mb-2 mb-lg-0 d-flex flex-row mb-0 position-absolute end-0 me-5">
-                    <li className="nav-item"><Link to="#" className="nav-link ms-3 fs-2 text"><FontAwesomeIcon icon={faSearch }  style={{color: "#5C593E"}} /></Link></li>             
+                    <li className="nav-item"><Link to="/search" className="nav-link ms-3 fs-2 text"><FontAwesomeIcon icon={faSearch }  style={{color: "#5C593E"}} /></Link></li>             
                     <li className="nav-item"><Link to={!!acceso ? "/inicio": "/login"} className="nav-link ms-3 fs-2 text"><FontAwesomeIcon icon={faUser} style={{color: "#5C593E",}}/></Link></li>
                     <li className="nav-item"><Link to = "/cart"className="nav-link ms-3 fs-2 text text-decoration-none text-decoration-none" style={{color: "#5C593E",}} ><FontAwesomeIcon icon={faCartShopping}/>({items.length})</Link></li>
                     <li className="nav-item"> <button onClick={onClickLogout} type="button" className=" nav-link ms-3 fs-2 text btn"><FontAwesomeIcon icon={faSignOut}  style={{color: "#5C593E"}} />
                     {
-                      acceso === null && <Navigate to = "/login"/>
+                      acceso ===null && <Navigate to = "/login"/>
                     }
-                    </button></li> 
+                    </button>
+                    </li> 
                 </ul>
                 </div>
             </div>
